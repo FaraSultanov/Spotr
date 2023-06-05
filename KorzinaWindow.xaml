@@ -1,0 +1,50 @@
+﻿<Window x:Class="FootShoop.KorzinaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FootShoop"
+        mc:Ignorable="d"
+        Title="Корзина" Height="450" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="dgKorzina" Margin="21,28,21,143" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Изображение" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImageTovar}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding NameTovar}" Width="*"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding DiscriptionTovar}" Width="*"/>
+                <DataGridTextColumn Header="Производство" Binding="{Binding ManufacturerTovar}" Width="*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding PriceTovar, StringFormat={}{0:c0}, ConverterCulture=ru}" Width="*"/>
+                <DataGridTextColumn Header="Скидка" Binding="{Binding DiscountTovar}" Width="*"/>
+                <DataGridTemplateColumn Header="Кол-во" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="1"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить" Name ="btnDeleteTovar" Click="btnDeleteTovar_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="lblTotalPrice" Content="Общая стоимость:" HorizontalAlignment="Left" Height="27" Margin="38,325,0,0" VerticalAlignment="Top" Width="290"/>
+        <Label x:Name="lblDiscountPrice" Content="Размер скидки:" HorizontalAlignment="Left" Height="29" Margin="38,357,0,0" VerticalAlignment="Top" Width="220"/>
+        <ComboBox x:Name="cmbPickPoint" HorizontalAlignment="Left" Height="24" Margin="511,338,0,0" VerticalAlignment="Top" Width="184"/>
+        <Label x:Name="lblPickPoint" Content="Выбериите пункт выдачи" HorizontalAlignment="Left" Height="27" Margin="511,311,0,0" VerticalAlignment="Top" Width="171"/>
+        <Button x:Name="btnOrderAccess" Content="Оформить заказ" HorizontalAlignment="Left" Height="26" Margin="511,372,0,0" VerticalAlignment="Top" Width="173" Click="btnOrderAccess_Click_1"/>
+
+    </Grid>
+</Window>
